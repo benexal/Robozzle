@@ -1,26 +1,28 @@
 import Phaser from "phaser";
-import { config } from '../main.js';
+import { config,numberOfSquares, squareSize, startX } from '../main.js';
 
 export default class Game extends Phaser.Scene{
 
     preload(){
-        this.load.image('voiture', 'src/images/voiture-robozzle.png');
-        this.load.image('humain', 'src/images/human-robozzle.png');
+        this.voiture = this.load.image('voiture', 'voiture-robozzle.png');
+        this.humain  = this.load.image('humain', 'human-robozzle.jpg');
+        
+
+      
     }
     
     create(){
 
         this.createCases()  
 
-        const voiture = this.add.sprite(startX + 7* squareSize, y, 'voitute');
+        this.voiture = this.add.image(startX + 6* squareSize, config.height / 2,'voiture');
+        
         
     }
 
 
     createCases(){
-        const numberOfSquares = 10;
-        const squareSize = 50;
-        const startX = (config.width - (numberOfSquares * squareSize)) / 2;
+       
 
         const squaresGroup = this.add.group();
 
