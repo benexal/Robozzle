@@ -1,19 +1,20 @@
 import Phaser from "phaser";
 import { config } from '../main.js';
 
-export default class Game extends Phaser.Scene{
 
+export default class Game extends Phaser.Scene{
+ 
     preload(){
         this.load.image('voiture', 'src/images/voiture-robozzle.png');
         this.load.image('humain', 'src/images/human-robozzle.png');
+        this.load.image('haut', 'src/images/up-arrow-upload_9661010.png');
     }
-    
+   
     create(){
-
-        this.createCases()  
-
-        const voiture = this.add.sprite(startX + 7* squareSize, y, 'voitute');
         
+        this.createCases()
+        const instructionsSprite = this.add.sprite(100, 450, 'haut');
+
     }
 
 
