@@ -10,6 +10,9 @@ const config = {
     type: Phaser.AUTO,
     backgroundColor: '#cccaca',
 }
+export const numberOfSquares = 10;
+export const squareSize = 50;
+export const startX = (config.width - (numberOfSquares * squareSize)) / 2;
 
 export { config };
 const game = new Phaser.Game(config)
