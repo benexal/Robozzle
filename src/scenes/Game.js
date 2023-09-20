@@ -1,18 +1,26 @@
 import Phaser from "phaser";
-import { config } from '../main.js';
+import { config,numberOfSquares, squareSize, startX } from '../main.js';
+import InstructionsScene from "./instructions";
+ 
 
 export default class Game extends Phaser.Scene{
  
     preload(){
-        this.load.image('voiture', 'src/images/voiture-robozzle.png');
-        this.load.image('humain', 'src/images/human-robozzle.png');
+        this.voiture = this.load.image('voiture', 'voiture-robozzle.png');
+        this.humain  = this.load.image('humain', 'human-robozzle.jpg');
+
+
+
     }
    
     create(){
 
         this.createCases()  
 
-        const voiture = this.add.sprite(startX + 7* squareSize, y, 'voitute');
+        this.voiture = this.add.image(startX + 6* squareSize, config.height / 2,'voiture');
+        this.scene.start('InstructionsScene');
+        //this.scene.add('InstructionsScene', InstructionsScene);
+
         
     }
 
@@ -21,6 +29,7 @@ export default class Game extends Phaser.Scene{
        
 
         const squaresGroup = this.add.group();
+
 
         for (let i = 0; i < numberOfSquares; i++) {
         let squareColor = 0x0000ff; // Bleu par défaut
