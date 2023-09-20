@@ -21,3 +21,4 @@ const game = new Phaser.Game(config)
 game.scene.add('interfaceVisualisation', InterfaceVisualisation)
 game.scene.add('interfaceProgrammation', interfaceProgrammation)
 game.scene.start('interfaceVisualisation')
+
