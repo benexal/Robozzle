@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import { config,numberOfSquares, squareSize, startX } from '../main.js';
 
-export default class Game extends Phaser.Scene{
+export default class InterfaceVisualisation extends Phaser.Scene{
 
     preload(){
-        this.voiture = this.load.image('voiture', 'voiture-robozzle.png');
-        this.humain  = this.load.image('humain', 'human-robozzle.jpg');
+        this.load.image('voiture', 'voiture-robozzle.png');
+        this.load.image('humain', 'humain-robozzle.png');
         
 
       
@@ -13,10 +13,13 @@ export default class Game extends Phaser.Scene{
     
     create(){
 
+        this.scene.run('interfaceProgrammation')
         this.createCases()  
+        this.placerlaVoiture()
+       this.placerLesHumains()
+    
+      
 
-        this.voiture = this.add.image(startX + 6* squareSize, config.height / 2,'voiture');
-        
         
     }
 
@@ -44,8 +47,24 @@ export default class Game extends Phaser.Scene{
         // Ajoutez un contour autour de chaque case
         square.setStrokeStyle(2, 0x000000); // Épaisseur du trait de 2 pixels, couleur noire
 
-        squaresGroup.add(square);
+        this.squaresGroup = squaresGroup.add(square);
         }
+
+       
+    }
+    placerlaVoiture(){
+        this.voiture = this.add.sprite(startX + 6* squareSize, config.height / 2,'voiture');
+        this.voiture.setFlip(true, false);
+        this.voiture.displayWidth = 45;
+        this.voiture.displayHeight = 45;
+    }
+    placerLesHumains(){
+        for (let i = 0; i < 5; i++){
+            this.humain = this.add.image(startX + i* squareSize, config.height / 2+5,'humain');     
+            this.humain.displayWidth = 30;
+            this.humain.displayHeight = 30;
+        }
+       
     }
 
 
