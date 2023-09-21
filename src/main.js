@@ -10,7 +10,7 @@ const config = {
     height : 500,
     type: Phaser.AUTO,
     backgroundColor: '#cccaca',
-    scene: [Game,InstructionsScene]
+    
 }
 export const numberOfSquares = 10;
 export const squareSize = 50;
@@ -21,10 +21,12 @@ const game = new Phaser.Game(config)
 
 //game.scene.add('titlescreen', TitleScreen)
 game.scene.add('game', Game)
+game.scene.add('instructions', InstructionsScene)
 
 
 //game.scene.start('titlescreen')
 game.scene.start('game')
+//game.scene.start('instructions')
 
 // const instruction = new Phaser.Game(config);
 

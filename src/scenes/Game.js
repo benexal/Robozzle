@@ -18,7 +18,7 @@ export default class Game extends Phaser.Scene{
         this.createCases()  
 
         this.voiture = this.add.image(startX + 6* squareSize, config.height / 2,'voiture');
-        this.scene.start('InstructionsScene');
+        this.scene.run('InstructionsScene');
         //this.scene.add('InstructionsScene', InstructionsScene);
 
         
