@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import { config,numberOfSquares, squareSize, startX } from '../main.js';
+import InstructionsScene from "./instructions";
+ 
 
 export default class InterfaceVisualisation extends Phaser.Scene{
 
@@ -8,9 +10,10 @@ export default class InterfaceVisualisation extends Phaser.Scene{
         this.load.image('humain', 'humain-robozzle.png');
         
 
-      
+
+
     }
-    
+   
     create(){
 
         this.scene.run('interfaceProgrammation')
@@ -28,6 +31,7 @@ export default class InterfaceVisualisation extends Phaser.Scene{
        
 
         const squaresGroup = this.add.group();
+
 
         for (let i = 0; i < numberOfSquares; i++) {
         let squareColor = 0x0000ff; // Bleu par défaut

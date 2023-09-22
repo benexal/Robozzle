@@ -9,6 +9,7 @@ const config = {
     height : 500,
     type: Phaser.AUTO,
     backgroundColor: '#cccaca',
+    
 }
 export const numberOfSquares = 10;
 export const squareSize = 50;
