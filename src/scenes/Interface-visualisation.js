@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { config,numberOfSquares, squareSize, startX } from '../main.js';
-import InstructionsScene from "./instructions";
+
  
 
 export default class InterfaceVisualisation extends Phaser.Scene{
