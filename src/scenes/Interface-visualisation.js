@@ -11,9 +11,8 @@ export default class InterfaceVisualisation extends Phaser.Scene{
         
 
 
-
     }
-   
+
     create(){
 
         this.scene.run('interfaceProgrammation')
@@ -32,12 +31,11 @@ export default class InterfaceVisualisation extends Phaser.Scene{
 
         const squaresGroup = this.add.group();
 
-
         for (let i = 0; i < numberOfSquares; i++) {
-        let squareColor = 0x0000ff; // Bleu par défaut
+        let squareColor = 0x093f96; // Bleu par défaut
 
         if (i === numberOfSquares - 1) {
-            squareColor = 0xffff00; // Jaune pour la dernière case
+            squareColor = 0xdde810; // Jaune pour la dernière case
         }
 
         const square = this.add.rectangle(

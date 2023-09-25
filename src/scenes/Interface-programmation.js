@@ -22,21 +22,28 @@ create(){
   // this.totalExecBoutton.displayWidth=30
 
       this.upButton = this.add.sprite(89, 408, 'upButton').setInteractive();
-      this.upButton.displayWidth = 45;
-      this.upButton.displayHeight = 45;  
-  
+      this.upButton.displayWidth = 40;
+      this.upButton.displayHeight = 40;
+
       this.leftButton = this.add.sprite(50, 407, 'leftButton').setInteractive();
-      this.leftButton.displayWidth = 45;
-      this.leftButton.displayHeight = 45;       
+      this.leftButton.displayWidth = 40;
+      this.leftButton.displayHeight = 40;
 
       this.rightButton = this.add.sprite(130, 407, 'rightButton').setInteractive();
-      this.rightButton.displayWidth = 45;
-      this.rightButton.displayHeight = 45;
+      this.rightButton.displayWidth = 40;
+      this.rightButton.displayHeight = 40;
 
-      this.errorButton = this.add.sprite(180, 480, 'errorButton').setInteractive();
-      this.errorButton.displayWidth = 45;
-      this.errorButton.displayHeight = 45;
+      this.errorButton = this.add.sprite(210, 470, 'errorButton').setInteractive();
+      this.errorButton.displayWidth = 60;
+      this.errorButton.displayHeight = 60;
 
+    this.add.line(0,300,0,0,1600,0, 0x000000)
+    this.creerLesCasesGrises()
+    this.ajouterBouttonsExcécutions()
+    this.redSquare = this.add.rectangle(50, 470, 40, 40, 0x454545); // Carré girs
+    this.greenSquare = this.add.rectangle(90, 470, 40, 40, 0x259609); // Carré vert
+    this.blueSquare = this.add.rectangle(130, 470, 40, 40, 0x093f96); // Carré bleu
+    this.yellowSquare = this.add.rectangle(170, 470, 40, 40, 0xdde810); // Carré jaune
 }
 
 
@@ -75,6 +82,18 @@ creerLesCasesGrises(){
  
      }
  
+}
+
+ajouterBouttonsExcécutions(){
+    this.totalExecBoutton = this.add.sprite(700, 340,'total-execution');
+    this.totalExecBoutton.displayHeight=30
+    this.totalExecBoutton.displayWidth=30
+    this.partialExecBoutton = this.add.sprite(698, 380,'partial-execution');
+    this.partialExecBoutton.displayHeight=30
+    this.partialExecBoutton.displayWidth=30
+    this.restartBoutton = this.add.sprite(695, 420,'restart');
+    this.restartBoutton.displayHeight=30
+    this.restartBoutton.displayWidth=30
 }
 
 
