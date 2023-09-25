@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import { config,numberOfSquares, squareSize, startX } from '../main.js';
 
+ 
+
 export default class InterfaceVisualisation extends Phaser.Scene{
 
     preload(){
@@ -8,9 +10,9 @@ export default class InterfaceVisualisation extends Phaser.Scene{
         this.load.image('humain', 'humain-robozzle.png');
         
 
-      
+
     }
-    
+
     create(){
 
         this.scene.run('interfaceProgrammation')

@@ -7,18 +7,43 @@ preload(){
     this.load.image('total-execution', 'total-execution.png');
     this.load.image('partial-execution', 'partial-execution.png');
     this.load.image('restart', 'restart.png');
-    
+    this.upButton = this.load.image('upButton', 'up-arrow-upload_9661010.png');
+    this.leftButton = this.load.image('leftButton', 'left-arrow_10559346.png');
+    this.rightButton = this.load.image('rightButton', 'right-arrow_9688251.png');
+    this.errorButton = this.load.image('errorButton', 'close_8982958.png');
 
 }
 
 create(){
+   this.add.line(0,300,0,0,1600,0, 0x000000)
+   this.creerLesCasesGrises();
+  // this.totalExecBoutton = this.add.sprite(700, 400,'total-execution');
+   //this.totalExecBoutton.displayHeight=30
+  // this.totalExecBoutton.displayWidth=30
+
+      this.upButton = this.add.sprite(89, 408, 'upButton').setInteractive();
+      this.upButton.displayWidth = 45;
+      this.upButton.displayHeight = 45;
+
+      this.leftButton = this.add.sprite(50, 407, 'leftButton').setInteractive();
+      this.leftButton.displayWidth = 45;
+      this.leftButton.displayHeight = 45;
+
+      this.rightButton = this.add.sprite(130, 407, 'rightButton').setInteractive();
+      this.rightButton.displayWidth = 45;
+      this.rightButton.displayHeight = 45;
+
+      this.errorButton = this.add.sprite(180, 480, 'errorButton').setInteractive();
+      this.errorButton.displayWidth = 45;
+      this.errorButton.displayHeight = 45;
+
     this.add.line(0,300,0,0,1600,0, 0x000000)
     this.creerLesCasesGrises()
     this.ajouterBouttonsExcécutions()
     this.redSquare = this.add.rectangle(100, 450, 40, 40, 0x454545); // Carré girs
     this.greenSquare = this.add.rectangle(140, 450, 40, 40, 0x259609); // Carré vert
     this.blueSquare = this.add.rectangle(180, 450, 40, 40, 0x093f96); // Carré bleu
-    this.yellowSquare = this.add.rectangle(220, 450, 40, 40, 0xdde810); // Carré jaune    
+    this.yellowSquare = this.add.rectangle(220, 450, 40, 40, 0xdde810); // Carré jaune
 }
 
 
