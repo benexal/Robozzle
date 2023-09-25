@@ -12,11 +12,13 @@ preload(){
 }
 
 create(){
-   this.add.line(0,300,0,0,1600,0, 0x000000)
-   this.creerLesCasesGrises();
-  // this.totalExecBoutton = this.add.sprite(700, 400,'total-execution');
-   //this.totalExecBoutton.displayHeight=30
-  // this.totalExecBoutton.displayWidth=30
+    this.add.line(0,300,0,0,1600,0, 0x000000)
+    this.creerLesCasesGrises()
+    this.ajouterBouttonsExcécutions()
+    this.redSquare = this.add.rectangle(100, 450, 40, 40, 0x454545); // Carré girs
+    this.greenSquare = this.add.rectangle(140, 450, 40, 40, 0x259609); // Carré vert
+    this.blueSquare = this.add.rectangle(180, 450, 40, 40, 0x093f96); // Carré bleu
+    this.yellowSquare = this.add.rectangle(220, 450, 40, 40, 0xdde810); // Carré jaune    
 }
 
 
@@ -55,6 +57,18 @@ creerLesCasesGrises(){
  
      }
  
+}
+
+ajouterBouttonsExcécutions(){
+    this.totalExecBoutton = this.add.sprite(700, 330,'total-execution');
+    this.totalExecBoutton.displayHeight=30
+    this.totalExecBoutton.displayWidth=30
+    this.partialExecBoutton = this.add.sprite(700, 380,'partial-execution');
+    this.partialExecBoutton.displayHeight=30
+    this.partialExecBoutton.displayWidth=30
+    this.restartBoutton = this.add.sprite(700, 430,'restart');
+    this.restartBoutton.displayHeight=30
+    this.restartBoutton.displayWidth=30
 }
 
 

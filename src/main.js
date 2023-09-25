@@ -8,7 +8,7 @@ const config = {
     width : 800,
     height : 500,
     type: Phaser.AUTO,
-    backgroundColor: '#cccaca',
+    backgroundColor: '#edeef0',
 }
 export const numberOfSquares = 10;
 export const squareSize = 50;
