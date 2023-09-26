@@ -84,4 +84,17 @@ MoveofCar(){
 }  
 
 
+    update(){
+        this.turnLeft()
+        //this.turnRight()
+    }
+
+    turnLeft(){
+        this.voiture.setAngle(-90)
+    }
+    turnRight(){
+       
+        this.voiture.setAngle(90)
+    }
+
 }
