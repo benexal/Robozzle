@@ -72,20 +72,13 @@ export default class InterfaceVisualisation extends Phaser.Scene{
        
     }
 
+  
+
+
+
     update(){
         this.MoveofCar()
-        
-}
-MoveofCar(){
-    // Faites avancer le sprite horizontalement
-    this.voiture.x += vitesseHorizontale;
-  
-    
-}  
-
-
-    update(){
-        this.turnLeft()
+       // this.turnLeft()
         //this.turnRight()
     }
 
@@ -96,5 +89,11 @@ MoveofCar(){
        
         this.voiture.setAngle(90)
     }
+    MoveofCar(){
+        // Faites avancer le sprite horizontalement
+        this.voiture.x += vitesseHorizontale;
+      
+        
+    }  
 
 }
