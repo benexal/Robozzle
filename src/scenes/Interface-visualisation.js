@@ -77,7 +77,7 @@ export default class InterfaceVisualisation extends Phaser.Scene{
 
 
     update(){
-        this.MoveofCar()
+      //  this.MoveofCar()
        // this.turnLeft()
         //this.turnRight()
     }
