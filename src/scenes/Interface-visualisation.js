@@ -17,8 +17,8 @@ export default class InterfaceVisualisation extends Phaser.Scene{
 
         this.scene.run('interfaceProgrammation')
         this.createCases()  
-        this.placerlaVoiture()
-       this.placerLesHumains()
+        this.placeCarOnCases()
+       this.placeHumansOnCases()
     
       
 
@@ -54,13 +54,13 @@ export default class InterfaceVisualisation extends Phaser.Scene{
 
        
     }
-    placerlaVoiture(){
+    placeCarOnCases(){
         this.voiture = this.add.sprite(startX + 6* squareSize, config.height / 2,'voiture');
         this.voiture.setFlip(true, false);
         this.voiture.displayWidth = 45;
         this.voiture.displayHeight = 45;
     }
-    placerLesHumains(){
+    placeHumansOnCases(){
         for (let i = 0; i < 5; i++){
             this.humain = this.add.image(startX + i* squareSize, config.height / 2+5,'humain');     
             this.humain.displayWidth = 30;
