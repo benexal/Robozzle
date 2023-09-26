@@ -1,9 +1,11 @@
 import Phaser from "phaser";
 import { config,numberOfSquares, squareSize, startX } from '../main.js';
 
- 
+let vitesseHorizontale = 1; // Vitesse de déplacement horizontale
+
 
 export default class InterfaceVisualisation extends Phaser.Scene{
+    
 
     preload(){
         this.load.image('voiture', 'voiture-robozzle.png');
@@ -18,7 +20,8 @@ export default class InterfaceVisualisation extends Phaser.Scene{
         this.scene.run('interfaceProgrammation')
         this.createCases()  
         this.placeCarOnCases()
-       this.placeHumansOnCases()
+        this.placeHumansOnCases()
+        
     
       
 
@@ -68,6 +71,17 @@ export default class InterfaceVisualisation extends Phaser.Scene{
         }
        
     }
+
+    update(){
+        this.MoveofCar()
+        
+}
+MoveofCar(){
+    // Faites avancer le sprite horizontalement
+    this.voiture.x += vitesseHorizontale;
+  
+    
+}  
 
 
 }
