@@ -3,6 +3,8 @@ import { config, squareSize, startX,numberOfSquares } from '../main.js';
 
 export default class interfaceProgrammation extends Phaser.Scene{
 
+  
+
   preload(){
       this.load.image('total-execution', 'total-execution.png');
       this.load.image('partial-execution', 'partial-execution.png');
@@ -17,10 +19,13 @@ export default class interfaceProgrammation extends Phaser.Scene{
   create(){
       this.add.line(0,300,0,0,1600,0, 0x000000)
       this.createGrayCases()
+      this.addColorsInGrayCases()
       this.addMovementButton()
       this.addErrorButton()  
       this.ajouterBouttonsExcécutions()
       this.addColorsCases()
+      this.clickColorCases()
+      
       
   }
 
@@ -37,29 +42,71 @@ export default class interfaceProgrammation extends Phaser.Scene{
           squareSize,              // Hauteur du rectangle
           0x888888              // Couleur du rectangle
       
-          );
-          grayBox.setStrokeStyle(1, 0x000000); // Épaisseur du trait de 1 pixels, couleur noire
+          ).setInteractive().setStrokeStyle(1, 0x000000);
+         
           this.squaresGroup = squaresGroup.add(grayBox);
-          grayBox.setInteractive(); // Rend le rectangle interactif pour le glisser-déposer
+
+    }
+    
+
+    
+  }
+
+  addColorsInGrayCases(){
+
+    // this.squaresGroup.children.iterate((grayBox) => {
+    //   grayBox.on('pointerdown', () => {
+    //     if (this.selectedColor !== null) {
+    //       if(this.selectedColor == 0x454545 ){
+    //         grayBox.fillColor = 0x888888;
   
-            
-          this.input.setDraggable(grayBox);   // Écoutez les événements de glisser-déposer
+    //       }else{
+    //         grayBox.fillColor = this.selectedColor;
+    //       }
+    //       // Définissez la couleur de la case sur la couleur sélectionnée
+         
   
-          this.input.on('dragstart', (pointer, gameObject) => {
-              // Code à exécuter lorsque le glisser-déposer commence
-            });
-          
-            this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-              // Code à exécuter pendant le glisser-déposer
-              
-            });
-        
-            this.input.on('dragend', (pointer, gameObject) => {
-              // Code à exécuter lorsque le glisser-déposer se termine
-            });
+    //       // Changez la taille de la case pour qu'elle paraisse plus grande
+    //       grayBox.setStrokeStyle(2, 0xffffff);
   
-      }
-  
+    //       // Désactivez la bordure des autres cases grises
+    //       this.squaresGroup.children.iterate((child) => {
+    //         if (child !== grayBox) {
+    //           child.setStrokeStyle(1, 0x000000);
+    //         }
+    //       });
+    //     }
+    //   });
+    // });
+
+
+    this.squaresGroup.children.iterate((grayBox) => {
+      grayBox.on('pointerdown', () => {
+        if (this.selectedColor !== null) {
+          if (this.selectedColor === 0x454545) {
+            grayBox.fillColor = 0x888888;
+          } else {
+            grayBox.fillColor = this.selectedColor;
+          }
+    
+          // Changez la taille de la case pour qu'elle paraisse plus grande
+          grayBox.setStrokeStyle(2, 0xffffff);
+    
+          // Désactivez la bordure des autres cases grises
+          this.squaresGroup.children.iterate((child) => {
+            if (child !== grayBox) {
+              child.setStrokeStyle(1, 0x000000); // Supprimez la bordure des autres cases
+            }
+          });
+    
+          // Attendez un court instant (par exemple, 200 ms) et réinitialisez la bordure
+          setTimeout(() => {
+            grayBox.setStrokeStyle(1, 0x000000);
+          }, 200);
+        }
+      });
+    });
+    
   }
 
   ajouterBouttonsExcécutions(){
@@ -82,7 +129,7 @@ export default class interfaceProgrammation extends Phaser.Scene{
     this.leftButton = this.add.sprite(50, 407, 'leftButton').setInteractive();
     this.leftButton.displayWidth = 40;
     this.leftButton.displayHeight = 40;
-
+    
     this.rightButton = this.add.sprite(130, 407, 'rightButton').setInteractive();
     this.rightButton.displayWidth = 40;
     this.rightButton.displayHeight = 40;
@@ -95,10 +142,68 @@ export default class interfaceProgrammation extends Phaser.Scene{
   }
 
   addColorsCases(){
-    this.redSquare = this.add.rectangle(50, 470, 40, 40, 0x454545); // Carré girs
-      this.greenSquare = this.add.rectangle(90, 470, 40, 40, 0x259609); // Carré vert
-      this.blueSquare = this.add.rectangle(130, 470, 40, 40, 0x093f96); // Carré bleu
-      this.yellowSquare = this.add.rectangle(170, 470, 40, 40, 0xdde810); // Carré jaune
+
+    const couleurParNom = {
+      graySquare: 0x454545, // Carré gris
+      greenSquare: 0x259609, // Carré vert
+      blueSquare: 0x093f96, // Carré bleu
+      yellowSquare: 0xdde810 // Carré jaune
+    };
+    
+    let emplacement = 0
+    // Créez et ajoutez les rectangles interactifs en utilisant le dictionnaire
+    for (const nom in couleurParNom) {
+      emplacement+=40
+      if (couleurParNom.hasOwnProperty(nom)) {
+        this[nom] = this.add.rectangle(emplacement, 470, 40, 40, couleurParNom[nom]).setInteractive();
+      }
+    }
+
+    this.colorsByName = couleurParNom
+
+  }
+
+  clickColorCases(){
+    
+   // Déclarez une variable pour stocker la case précédemment cliquée
+    this.previousCase = null;
+
+  // Associez des gestionnaires d'événements aux rectangles interactifs
+    for (const name in this.colorsByName) {
+      const currentCase = this[name];
+
+      currentCase.on('pointerdown', () => {
+        // Cette fonction sera appelée lorsque la case est cliquée
+
+        // Si la même case est cliquée deux fois, réinitialise la couleur sélectionnée et supprime la bordure
+        if (this.previousCase === currentCase) {
+          if (this.selectedColor === null) {
+            // Si la couleur sélectionnée est nulle, définissez-la sur la couleur de la case
+            this.selectedColor = this.colorsByName[name];
+            currentCase.setStrokeStyle(4, 0xffffff); // Ajoutez une bordure blanche à la case actuelle
+          } else {
+            // Si la couleur sélectionnée est la même que la couleur de la case, réinitialisez la couleur et supprimez la bordure
+            this.selectedColor = null;
+            currentCase.setStrokeStyle(0, 0xffffff); // Supprimez la bordure
+          }
+        } else {
+          // Sinon, désactivez les bordures de la case précédente
+          if (this.previousCase) {
+            this.previousCase.setStrokeStyle(0, 0xffffff); // Supprimez la bordure de la case précédente
+          }
+
+          // Activez la bordure de la case actuelle et mettez à jour la couleur sélectionnée
+          this.selectedColor = this.colorsByName[name]; // Sélectionnez la nouvelle couleur
+          currentCase.setStrokeStyle(4, 0xffffff); // Ajoutez une bordure blanche à la case actuelle
+        }
+
+        // Mettez à jour la case précédemment cliquée
+        this.previousCase = currentCase;
+        console.log(this.previousCase, currentCase);
+        console.log(this.selectedColor.toString(16));
+        
+      });
+    }
   }
 
 
