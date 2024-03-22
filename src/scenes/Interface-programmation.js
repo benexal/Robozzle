@@ -54,32 +54,6 @@ export default class interfaceProgrammation extends Phaser.Scene{
 
   addColorsInGrayCases(){
 
-    // this.squaresGroup.children.iterate((grayBox) => {
-    //   grayBox.on('pointerdown', () => {
-    //     if (this.selectedColor !== null) {
-    //       if(this.selectedColor == 0x454545 ){
-    //         grayBox.fillColor = 0x888888;
-  
-    //       }else{
-    //         grayBox.fillColor = this.selectedColor;
-    //       }
-    //       // Définissez la couleur de la case sur la couleur sélectionnée
-         
-  
-    //       // Changez la taille de la case pour qu'elle paraisse plus grande
-    //       grayBox.setStrokeStyle(2, 0xffffff);
-  
-    //       // Désactivez la bordure des autres cases grises
-    //       this.squaresGroup.children.iterate((child) => {
-    //         if (child !== grayBox) {
-    //           child.setStrokeStyle(1, 0x000000);
-    //         }
-    //       });
-    //     }
-    //   });
-    // });
-
-
     this.squaresGroup.children.iterate((grayBox) => {
       grayBox.on('pointerdown', () => {
         if (this.selectedColor !== null) {
@@ -123,16 +97,45 @@ export default class interfaceProgrammation extends Phaser.Scene{
 
   addMovementButton(){
     this.upButton = this.add.sprite(89, 408, 'upButton').setInteractive();
-    this.upButton.displayWidth = 40;
-    this.upButton.displayHeight = 40;
-
-    this.leftButton = this.add.sprite(50, 407, 'leftButton').setInteractive();
-    this.leftButton.displayWidth = 40;
-    this.leftButton.displayHeight = 40;
-    
     this.rightButton = this.add.sprite(130, 407, 'rightButton').setInteractive();
-    this.rightButton.displayWidth = 40;
-    this.rightButton.displayHeight = 40;
+    this.leftButton = this.add.sprite(50, 407, 'leftButton').setInteractive();
+    // this.upButton.displayWidth = 40;
+    // this.upButton.displayHeight = 40;
+
+   
+    // this.leftButton.displayWidth = 40;
+    // this.leftButton.displayHeight = 40;
+    
+    
+    // this.rightButton.displayWidth = 40;
+    // this.rightButton.displayHeight = 40;
+
+
+    const movementButton = {
+      upButton: 'upButton', 
+      rightButton: 'rightButton', 
+      leftButton: 'leftButton',  
+    }
+
+    this.movementButton = movementButton
+
+    for(const nom in this.movementButton) {
+
+      if (this.movementButton.hasOwnProperty(nom)) {
+        this[nom].displayHeight = 40
+        this[nom].displayWidth= 40
+      }
+    }
+
+    for(const nom in this.movementButton){
+      this[this.movementButton[nom]].on('pointerdown', () => {
+
+        })
+    }
+
+
+    
+
   }
 
   addErrorButton(){
